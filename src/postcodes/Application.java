@@ -1,9 +1,13 @@
 package postcodes;
 
-import java.lang.*;
+import spitfire.*;
 
 class Application {
   public static void main(String[] args) {
-    System.out.println("Hello world");
+    if (FileSystem.TestFileExists("build.xml")) {
+      System.out.println("build.xml exists");
+    } else {
+      System.out.println("build.xml does not exist");
+    }
   }
 }
