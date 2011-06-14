@@ -1,6 +1,6 @@
 package spitfire;
 
-import java.io.*;
+import java.io.File;
 
 public class FileSystem {
   public static boolean TestFileExists(final String sPath)
