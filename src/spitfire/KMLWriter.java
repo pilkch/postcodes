@@ -17,6 +17,7 @@ public class KMLWriter {
   public void Close() {
     out.println("  </Document>");
     out.println("</kml>");
+    out.println("");
     out.close();
   }
 
