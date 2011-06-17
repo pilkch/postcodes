@@ -3,7 +3,6 @@ package spitfire;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 public class CSVReader {
   private BufferedReader in;
@@ -26,14 +25,20 @@ public class CSVReader {
 
     ArrayList<String> values = new ArrayList<String>();
 
-    StringTokenizer st = new StringTokenizer(sLine, ",");
-    while (st.hasMoreTokens()) {
-      String sValue = st.nextToken().trim();
-      // Strip quotes if they exist
-      if (sValue.startsWith("\"") && sValue.endsWith("\"")) {
-        sValue = sValue.substring(1, sValue.length() - 1);
+    StringParser sp = new StringParser(sLine);
+    while (!sp.IsEnd()) {
+      sp.SkipWhiteSpace();
+      if (sp.IsEnd()) break;
+
+      if (sp.GetCharacter() == '\"') {
+        sp.SkipCharacter();
+        String sValue = sp.GetToCharacterAndSkip('\"');
+        values.add(sValue);
+        sp.SkipToCharacterAndSkip(',');
+      } else {
+        String sValue = sp.GetToCharacterAndSkip(',');
+        values.add(sValue);
       }
-      values.add(sValue);
     }
 
     return values;
