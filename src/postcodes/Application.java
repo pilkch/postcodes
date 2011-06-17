@@ -71,14 +71,45 @@ class Application {
     }
 
 
-    // NZ
+    // New Zealand post codes
+    if (spitfire.FileSystem.TestFileExists(sPostcodesNewZealandCSV)) {
+      try {
+        System.out.println("Processing New Zealand Post Codes");
+        int lines = 0;
+        BufferedReader br = new BufferedReader(new FileReader(sPostcodesNewZealandCSV));
 
-    //if (values.size() != 8) {
-    //  System.err.println("Invalid line found");
-    //} else {
-    //String sPostCode = values.get(3);
-    //String sLatitude = values.get(4);
-    //String sLongitude = values.get(5);
+        reader = new CSVReader(br);
+
+        ArrayList<String> values = null;
+
+        // Skip the first line which is just the column names
+        reader.SkipLine();
+
+        while ((values = reader.ReadLine()) != null) {
+          if (values.size() != 8) {
+            System.err.println("Invalid line found");
+            // NOTE: For some reason the New Zealand post code list contains a few lines without latitude and longitude
+          } else {
+            String sPostCode = values.get(3);
+            String sLatitude = values.get(4);
+            String sLongitude = values.get(5);
+            if (!sPostCode.isEmpty() && !sLatitude.isEmpty() && !sLongitude.isEmpty()) {
+              writer.WritePlacemark(sPostCode, sPostCode, Double.valueOf(sLatitude), Double.valueOf(sLongitude));
+              lines++;
+            }
+          }
+        }
+
+        reader.Close();
+        System.out.println("Added " + lines + " New Zealand Post Codes");
+      } catch (FileNotFoundException e) {
+        System.err.println("FileNotFoundException: " + e.getMessage());
+      } catch (IOException e) {
+        System.err.println("Caught IOException: " + e.getMessage());
+      } finally {
+      }
+    }
+
     writer.Close();
     System.out.println("Finished");
   }
