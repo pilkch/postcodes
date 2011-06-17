@@ -43,14 +43,14 @@ It uses data from other websites.
 ### Resources
 
 Australian Post Codes  
-Copyright 2007, Corra  
+Copyright 2007, Corra Communications  
 All rights reserved  
-[Corra][4] 
+[Corra Communications][4] 
 
 New Zealand Post Codes  
-Copyright 2007, Noodles  
+Copyright 2007, Noodles' Blog  
 All rights reserved  
-[Noodles][5] 
+[Noodles' Blog][5] 
 
 KML Reference  
 [KML][1] </body> </html>
