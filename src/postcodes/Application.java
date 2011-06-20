@@ -19,25 +19,25 @@ class Application {
       return;
     }
 
-    spitfire.KMLWriter writer = null;
-
-    try {
-      writer = new KMLWriter(new PrintStream("points.kml"));
-    } catch (FileNotFoundException e) {
-      System.err.println("FileNotFoundException: " + e.getMessage());
-    } finally {
-    }
-
     spitfire.CSVReader reader = null;
 
     // Australian post codes
     if (spitfire.FileSystem.TestFileExists(sPostcodesAustraliaCSV)) {
+      spitfire.KMLWriter writer = null;
+
       try {
-          System.out.println("Processing Australian Post Codes");
+        System.out.println("Processing Australian Post Codes");
         int lines = 0;
         BufferedReader br = new BufferedReader(new FileReader(sPostcodesAustraliaCSV));
 
         reader = new CSVReader(br);
+
+        try {
+          writer = new KMLWriter(new PrintStream("points_au.kml"));
+        } catch (FileNotFoundException e) {
+          System.err.println("FileNotFoundException: " + e.getMessage());
+        } finally {
+        }
 
         ArrayList<String> values = null;
 
@@ -67,18 +67,28 @@ class Application {
       } catch (IOException e) {
         System.err.println("Caught IOException: " + e.getMessage());
       } finally {
+        writer.Close();
       }
     }
 
 
     // New Zealand post codes
     if (spitfire.FileSystem.TestFileExists(sPostcodesNewZealandCSV)) {
+      spitfire.KMLWriter writer = null;
+
       try {
         System.out.println("Processing New Zealand Post Codes");
         int lines = 0;
         BufferedReader br = new BufferedReader(new FileReader(sPostcodesNewZealandCSV));
 
         reader = new CSVReader(br);
+
+        try {
+          writer = new KMLWriter(new PrintStream("points_nz.kml"));
+        } catch (FileNotFoundException e) {
+          System.err.println("FileNotFoundException: " + e.getMessage());
+        } finally {
+        }
 
         ArrayList<String> values = null;
 
@@ -107,10 +117,10 @@ class Application {
       } catch (IOException e) {
         System.err.println("Caught IOException: " + e.getMessage());
       } finally {
+        writer.Close();
       }
     }
 
-    writer.Close();
     System.out.println("Finished");
   }
 }
