@@ -26,7 +26,7 @@ public class KMLWriter {
     out.println("      <name>" + EscapeString(sName) + "</name>");
     out.println("      <description>" + EscapeString(sDescription) + "</description>");
     out.println("      <Point>");
-    out.println("        <coordinates>" + fLatitude + "," + fLongitude + ",0</coordinates>");
+    out.println("        <coordinates>" + fLongitude + "," + fLatitude + ",0</coordinates>");
     out.println("      </Point>");
     out.println("    </Placemark>");
   }
