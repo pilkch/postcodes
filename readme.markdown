@@ -25,15 +25,24 @@ This application generates a [KML][1] file of post code points from importing pa
 ### Requirements
 
 [Java][2]  
-[Ant][3] 
+[Ant][3]  
+
+sudo yum install java ant (Or “sudo apt-get install java ant” in Ubuntu)  
+git pull https://github.com/pilkch/postcodes.git 
 
 ### Building
 
+cd postcodes/  
 ant build 
 
 ### Usage
 
-ant Application 
+ant Application  
+
+If everything worked, these files should now be in your current folder:  
+points_au.kml  
+points_nz.kml  
+points_nz2.kml 
 
 ### Credit
 

@@ -34,17 +34,26 @@
 		<h3>Requirements</h3>
 		<p>
 		  <a href="http://www.java.com/">Java</a><br/>
-		  <a href="http://ant.apache.org/">Ant</a>
-		</p>
+		  <a href="http://ant.apache.org/">Ant</a><br/>
+      <br/>
+      sudo yum install java ant (Or “sudo apt-get install java ant” in Ubuntu)<br/>
+      git pull https://github.com/pilkch/postcodes.git
+    </p>
 
 		<h3>Building</h3>
 		<p>
+      cd postcodes/<br/>
 		  ant build
 		</p>
 
 		<h3>Usage</h3>
 		<p>
-			ant Application
+			ant Application<br/>
+      <br/>
+      If everything worked, these files should now be in your current folder:<br/>
+      points_au.kml<br/>
+      points_nz.kml<br/>
+      points_nz2.kml
 		<p>
 
 		<h3>Credit</h3>
