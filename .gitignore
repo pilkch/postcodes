@@ -1,4 +1,4 @@
 build
 classes
-points_au.kml
-points_nz.kml
+*.kml
+
