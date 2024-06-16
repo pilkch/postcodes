@@ -1,0 +1,18 @@
+stages:
+  - build-and-test
+
+default:
+  before_script:
+    - dnf install -y java ant
+
+build-and-test-java:
+  stage: build-and-test
+  tags:
+    - linux
+  script:
+    # Build
+    - ant build
+    # Run
+    - ant Application
+    # These files should have now been created
+    - file points_au.kml points_nz.kml points_nz2.kml
