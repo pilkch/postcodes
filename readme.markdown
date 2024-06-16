@@ -24,29 +24,43 @@ This application generates a [KML][1] file of post code points from importing pa
 
 ### Requirements
 
-[Java][2]  
-[Ant][3]  
+- Java
+- Maven
 
-sudo yum install java ant (Or “sudo apt-get install java ant” in Ubuntu)  
-git pull https://github.com/pilkch/postcodes.git 
+Fedora:  
+```bash
+sudo dnf install java maven
+```
+Ubuntu:  
+```bash
+sudo apt-get install java maven
+```
+
+```bash
+git clone https://github.com/pilkch/postcodes.git 
+```
 
 ### Building
 
-cd postcodes/  
-ant build 
+```bash
+cd postcodes
+mvn compile
+mvn package
+```
 
 ### Usage
 
-ant Application  
+```bash
+java -cp ./target/postcodes-1.0.2.jar net.iluo.postcodes.Application
+```  
 
 If everything worked, these files should now be in your current folder:  
-points_au.kml  
-points_nz.kml  
-points_nz2.kml 
+- points_au.kml  
+- points_nz.kml  
 
 ### Credit
 
-This application is created by Christopher Pilkington.   
+This application is created by Christopher Pilkington.  
 It uses data from other websites. 
 
 ### Resources
@@ -54,19 +68,17 @@ It uses data from other websites.
 Australian Post Codes  
 Copyright 2007, Corra Communications  
 All rights reserved  
-[Corra Communications][4] 
+[Corra Communications][2]  
 
 New Zealand Post Codes  
 Copyright 2007, Noodles' Blog  
 All rights reserved  
-[Noodles' Blog][5] 
+[Noodles' Blog][3] 
 
 KML Reference  
 [KML][1] </body> </html>
 
  [1]: https://code.google.com/apis/kml/documentation/kml_tut.html#placemarks
- [2]: http://www.java.com/
- [3]: http://ant.apache.org/
- [4]: http://www.corra.com.au/support/downloads/
- [5]: http://www.noodles.net.nz/2007/09/14/new-zealand-postcode-database-v2/
+ [2]: http://www.corra.com.au/support/downloads/
+ [3]: http://www.noodles.net.nz/2007/09/14/new-zealand-postcode-database-v2/
 

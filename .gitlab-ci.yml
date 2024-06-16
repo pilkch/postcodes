@@ -3,7 +3,7 @@ stages:
 
 default:
   before_script:
-    - dnf install -y java ant
+    - dnf install -y java maven file
 
 build-and-test-java:
   stage: build-and-test
@@ -11,8 +11,9 @@ build-and-test-java:
     - linux
   script:
     # Build
-    - ant build
+    - mvn compile
+    - mvn package
     # Run
-    - ant Application
+    - java -cp ./target/postcodes-1.0.2.jar net.iluo.postcodes.Application
     # These files should have now been created
-    - file points_au.kml points_nz.kml points_nz2.kml
+    - file -E points_au.kml points_nz.kml

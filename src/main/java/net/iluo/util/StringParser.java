@@ -1,4 +1,4 @@
-package spitfire;
+package net.iluo.util;
 
 public class StringParser {
   private final String sBuffer;

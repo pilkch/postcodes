@@ -1,4 +1,4 @@
-package postcodes;
+package net.iluo.postcodes;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,23 +7,23 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import spitfire.*;
+import net.iluo.util.*;
 
 class Application {
   public static void main(String[] args) {
     final String sPostcodesAustraliaCSV = "Australian_Post_Codes_Lat_Lon.csv";
     final String sPostcodesNewZealandCSV = "nzpostcodes_v2.csv";
-    if (!spitfire.FileSystem.TestFileExists(sPostcodesAustraliaCSV) && !spitfire.FileSystem.TestFileExists(sPostcodesNewZealandCSV)) {
+    if (!net.iluo.util.FileSystem.TestFileExists(sPostcodesAustraliaCSV) && !net.iluo.util.FileSystem.TestFileExists(sPostcodesNewZealandCSV)) {
       System.err.println("Neither the Australian (" + sPostcodesAustraliaCSV + "), nor the New Zealand (" + sPostcodesNewZealandCSV + ") postcodes csv files exist");
       System.exit(-1);
       return;
     }
 
-    spitfire.CSVReader reader = null;
+    net.iluo.util.CSVReader reader = null;
 
     // Australian post codes
-    if (spitfire.FileSystem.TestFileExists(sPostcodesAustraliaCSV)) {
-      spitfire.KMLWriter writer = null;
+    if (net.iluo.util.FileSystem.TestFileExists(sPostcodesAustraliaCSV)) {
+      net.iluo.util.KMLWriter writer = null;
 
       try {
         System.out.println("Processing Australian Post Codes");
@@ -73,8 +73,8 @@ class Application {
 
 
     // New Zealand post codes
-    if (spitfire.FileSystem.TestFileExists(sPostcodesNewZealandCSV)) {
-      spitfire.KMLWriter writer = null;
+    if (net.iluo.util.FileSystem.TestFileExists(sPostcodesNewZealandCSV)) {
+      net.iluo.util.KMLWriter writer = null;
 
       try {
         System.out.println("Processing New Zealand Post Codes");

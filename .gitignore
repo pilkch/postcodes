@@ -1,4 +1,3 @@
-build
-classes
-*.kml
-
+target
+points_au.kml
+points_nz.kml
